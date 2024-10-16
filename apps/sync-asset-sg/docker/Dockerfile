@@ -1,6 +1,6 @@
 ARG APP_VERSION
 
-FROM node:22-alpine as sync-builder
+FROM node:22-alpine AS sync-builder
 
 ENV APP_VERSION=${APP_VERSION}
 ENV NODE_ENV=development
