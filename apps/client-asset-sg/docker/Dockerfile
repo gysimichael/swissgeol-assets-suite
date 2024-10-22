@@ -13,9 +13,8 @@ RUN apk add --no-cache \
 WORKDIR /app
 COPY . .
 
-RUN sed -i ''s/0.0.0-local/${APP_VERSION}/g'' apps/client-asset-sg/src/assets/version.json
-
-RUN npm install --ignore-scripts \
+RUN sed -i ''s/0.0.0-local/${APP_VERSION}/g'' apps/client-asset-sg/src/assets/version.json \
+ && npm install --ignore-scripts \
  && npx nx build client-asset-sg --configuration=production
 
 # final image build
