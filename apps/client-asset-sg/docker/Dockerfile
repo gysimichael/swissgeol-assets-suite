@@ -15,7 +15,7 @@ COPY . .
 
 RUN sed -i ''s/0.0.0-local/${APP_VERSION}/g'' apps/client-asset-sg/src/assets/version.json
 
-RUN npm install --no-scripts \
+RUN npm install --ignore-scripts \
  && npx nx build client-asset-sg --configuration=production
 
 # final image build
