@@ -80,9 +80,8 @@ export class AssetPickerComponent extends RxState<AssetPickerState> {
     this.set(initialState);
 
     const getTransformXY = () => {
-      const [, x, y] = window
-        .getComputedStyle(this._pickerContainer.nativeElement)
-        .transform.match(/matrix\([^,]*,[^,]*,[^,]*,[^,]*,\s*(-?\d+),\s*(-?\d+)\)/) || [0, 0, 0];
+      const REGEX = /matrix\([^,]*,[^,]*,[^,]*,[^,]*,\s*(-?\d+),\s*(-?\d+)\)/;
+      const [, x, y] = REGEX.exec(window.getComputedStyle(this._pickerContainer.nativeElement).transform) || [0, 0, 0];
       return { transformX: +x, transformY: +y };
     };
 
